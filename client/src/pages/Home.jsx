@@ -6,7 +6,6 @@ import {
   BrainCircuit, ImageIcon, TrendingUp, Clock, ExternalLink,
 } from 'lucide-react';
 import axios from 'axios';
-import NewsTicker from '../components/NewsTicker.jsx';
 import API_BASE, { resolveImageUrl } from '../utils/api.js';
 import './Home.css';
 
@@ -116,9 +115,6 @@ const Home = () => {
           <span className="home-nav__tagline">Real news. Zero noise.</span>
         </div>
       </nav>
-
-      {/* ── Live Ticker ───────────────────────────────── */}
-      <NewsTicker />
 
       {/* ── Hero Section ──────────────────────────────── */}
       <section className="hero-section">
