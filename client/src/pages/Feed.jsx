@@ -5,6 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import ShortsFeed from '../components/ShortsFeed.jsx';
 import LoadingScreen from '../components/LoadingScreen.jsx';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Feed = () => {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,7 @@ const Feed = () => {
         const keywords = query.split(',').map(k => k.trim()).filter(k => k);
         
         // In a real app we'd point to process.env.VITE_API_URL
-        const response = await axios.post('http://localhost:5000/api/news/search', {
+        const response = await axios.post(`${API_BASE}/api/news/search`, {
           keywords
         });
 
