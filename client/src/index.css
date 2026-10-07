@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00f0ff;
-  --color-secondary: #b000ff;
-  --color-accent: #ff00ff;
-  --color-bg-dark: #050507;
-  --color-bg-darker: #08080d;
-  --color-text-main: #ffffff;
-  --color-text-muted: #a0a0a5;
+  --color-primary: #f59e0b;
+  --color-secondary: #6366f1;
+  --color-accent: #ec4899;
+  --color-bg-dark: #0d1117;
+  --color-bg-darker: #090d13;
+  --color-text-main: #f0f4ff;
+  --color-text-muted: #8b95b0;
 }
 
 :root {
@@ -18,8 +18,8 @@
   --accent: var(--color-accent);
   --text-main: var(--color-text-main);
   --text-muted: var(--color-text-muted);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -33,7 +33,7 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-dark);
   color: var(--text-main);
-  overflow: hidden; /* Shorts feed handles scrolling */
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -57,7 +57,6 @@ button {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  /* Hide scrollbar for cleaner look */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -75,9 +74,8 @@ button {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-

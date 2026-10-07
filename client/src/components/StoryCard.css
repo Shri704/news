@@ -7,11 +7,11 @@
   margin: 0 auto;
   border-radius: 28px;
   overflow: hidden;
-  background: #000;
+  background: #0d1117;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06),
     0 30px 80px rgba(0, 0, 0, 0.8),
-    0 0 120px rgba(0, 240, 255, 0.04);
+    0 0 120px rgba(245, 158, 11, 0.06);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -41,9 +41,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.85) 30%,
-    rgba(0, 0, 0, 0.3) 65%,
+    rgba(9, 13, 19, 1) 0%,
+    rgba(9, 13, 19, 0.88) 28%,
+    rgba(9, 13, 19, 0.35) 62%,
     transparent 100%
   );
 }
@@ -56,26 +56,26 @@
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent);
+  background: linear-gradient(to bottom, rgba(9, 13, 19, 0.5), transparent);
 }
 
-/* ── Accent glow strip at bottom ──────────────────────── */
+/* ── Amber accent strip at bottom ─────────────────────── */
 .story-card__accent {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #00f0ff, #b000ff, #ff00ff);
-  opacity: 0.85;
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #6366f1);
+  opacity: 0.9;
   border-radius: 0 0 28px 28px;
 }
 
 /* ── Side Action Rail ─────────────────────────────────── */
 .story-card__rail {
   position: absolute;
-  right: 16px;
-  bottom: 180px;
+  right: 14px;
+  bottom: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,23 +95,23 @@
 }
 
 .rail-btn__icon {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(13, 17, 23, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #fff;
+  color: #f0f4ff;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .rail-btn:hover .rail-btn__icon {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
   transform: scale(1.1);
 }
 
@@ -122,29 +122,29 @@
 .rail-btn__label {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(240, 244, 255, 0.6);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 /* Save active state */
 .rail-btn.saved .rail-btn__icon {
-  background: rgba(0, 240, 255, 0.15);
-  border-color: rgba(0, 240, 255, 0.5);
-  color: #00f0ff;
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.55);
+  color: #f59e0b;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
 }
 
 .rail-btn.saved .rail-btn__label {
-  color: #00f0ff;
+  color: #f59e0b;
 }
 
 /* Share active state (flash) */
 .rail-btn.shared .rail-btn__icon {
-  background: rgba(176, 0, 255, 0.15);
-  border-color: rgba(176, 0, 255, 0.5);
-  color: #b000ff;
-  box-shadow: 0 0 16px rgba(176, 0, 255, 0.35);
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.55);
+  color: #6366f1;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.35);
 }
 
 /* ── Content ──────────────────────────────────────────── */
@@ -154,10 +154,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 24px 20px 28px 20px;
+  padding: 24px 20px 32px 20px;
   z-index: 10;
   /* leave room for right rail */
-  padding-right: 80px;
+  padding-right: 76px;
 }
 
 /* ── Category pill ──────────────────────────────────────── */
@@ -170,9 +170,9 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #00f0ff;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   margin-bottom: 10px;
@@ -181,39 +181,39 @@
 
 /* ── Headline ─────────────────────────────────────────── */
 .story-card__headline {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 800;
-  color: #fff;
+  color: #f0f4ff;
   line-height: 1.25;
   margin-bottom: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 /* ── Summary ──────────────────────────────────────────── */
 .story-card__summary {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(240, 244, 255, 0.78);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 /* ── Why it Matters box ───────────────────────────────── */
 .story-card__matters {
   padding: 10px 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.18);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .story-card__matters h4 {
@@ -221,13 +221,13 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #b000ff;
+  color: #f59e0b;
   margin-bottom: 4px;
 }
 
 .story-card__matters p {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 244, 255, 0.7);
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -240,38 +240,51 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 12px;
+  gap: 8px;
+  padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  /* ensure it never gets hidden behind the rail */
+  position: relative;
+  z-index: 11;
 }
 
 .story-card__meta {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(240, 244, 255, 0.38);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
+/* ── Sources button — ALWAYS VISIBLE ─────────────────── */
 .story-card__sources-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.85);
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* ensure tap target */
+  min-height: 36px;
+  touch-action: manipulation;
 }
 
-.story-card__sources-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
+.story-card__sources-btn:hover,
+.story-card__sources-btn:active {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
 }
 
 /* ── Toast notification ───────────────────────────────── */
@@ -281,13 +294,13 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 60;
-  background: rgba(20, 20, 30, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(13, 17, 23, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.2);
   border-radius: 999px;
   padding: 8px 20px;
   font-size: 13px;
   font-weight: 600;
-  color: #fff;
+  color: #f0f4ff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   white-space: nowrap;
@@ -296,9 +309,21 @@
 }
 
 /* ── Responsive tweaks ───────────────────────────────── */
-@media (max-width: 400px) {
-  .story-card__headline { font-size: 19px; }
-  .story-card__summary  { font-size: 12px; }
-  .story-card__content  { padding: 20px 16px 24px 16px; padding-right: 72px; }
-  .rail-btn__icon       { width: 42px; height: 42px; }
+@media (max-width: 420px) {
+  .story-card__content {
+    padding: 18px 14px 24px 14px;
+    padding-right: 68px;
+  }
+  .story-card__headline { font-size: 18px; }
+  .story-card__summary  { font-size: 12px; -webkit-line-clamp: 2; }
+  .story-card__matters  { display: none; } /* hide on very small to protect footer */
+  .rail-btn__icon       { width: 40px; height: 40px; }
+  .story-card__rail     { right: 10px; bottom: 140px; gap: 10px; }
+  .story-card__sources-btn { padding: 7px 12px; font-size: 11px; }
+}
+
+@media (max-height: 680px) {
+  /* Short phones (e.g. iPhone SE) */
+  .story-card__summary  { -webkit-line-clamp: 2; }
+  .story-card__matters  { display: none; }
 }
