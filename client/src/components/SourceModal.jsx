@@ -22,15 +22,15 @@ const SourceModal = ({ sources, onClose }) => {
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
         className="absolute bottom-0 left-0 right-0 z-50 bg-bg-darker/95 backdrop-blur-xl border-t border-white/10 rounded-t-3xl max-h-[85vh] flex flex-col shadow-[0_-10px_40px_rgba(0,0,0,0.5)]"
       >
-        <div className="flex justify-between items-center p-6 border-b border-white/5 relative">
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-white/20 rounded-full"></div>
-          <h3 className="text-xl font-bold text-white flex items-center gap-2 mt-2">
+        <div className="flex justify-between items-center p-6 pt-8 border-b border-white/5 relative">
+          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-white/20 rounded-full"></div>
+          <h3 className="text-lg md:text-xl font-bold text-white flex items-center gap-2">
             <Globe className="text-primary" />
             Source Articles
           </h3>
           <button 
             onClick={onClose}
-            className="p-2 mt-2 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X size={20} />
           </button>
