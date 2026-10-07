@@ -1,0 +1,26 @@
+.shorts-feed-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-darker);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-snap-point {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  /* On desktop, confine the shorts feed to a mobile-sized container in the center */
+  .story-snap-point {
+    padding: 2rem 0;
+  }
+}
