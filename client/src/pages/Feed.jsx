@@ -4,8 +4,7 @@ import axios from 'axios';
 import { ArrowLeft } from 'lucide-react';
 import ShortsFeed from '../components/ShortsFeed.jsx';
 import LoadingScreen from '../components/LoadingScreen.jsx';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import API_BASE from '../utils/api.js';
 
 const Feed = () => {
   const [stories, setStories] = useState([]);

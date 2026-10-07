@@ -2,10 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bookmark, Share2, Library } from 'lucide-react';
 import SourceModal from './SourceModal.jsx';
+import API_BASE from '../utils/api.js';
 import './StoryCard.css';
-
-/* ── Server base URL for relative image paths ─────────────── */
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 /**
  * Resolves a story imageUrl to a full URL.
