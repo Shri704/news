@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import NewsTicker from '../components/NewsTicker.jsx';
-import API_BASE from '../utils/api.js';
+import API_BASE, { resolveImageUrl } from '../utils/api.js';
 import './Home.css';
 
 const PRESET_TOPICS = [
@@ -22,17 +22,9 @@ const HOW_IT_WORKS = [
   { icon: <ImageIcon size={22} />,   title: 'Visualise', desc: 'Generate editorial images and serve everything as an immersive feed.' },
 ];
 
-/* Resolve image path same way StoryCard does */
-const resolveImg = url => {
-  if (!url) return null;
-  if (url.startsWith('/')) return `${API_BASE}${url}`;
-  return url;
-};
-
 /* ─── Recent Story Mini-Card ─────────────────────────── */
 const MiniCard = ({ story, onClick }) => {
-  const img = resolveImg(story.imageUrl);
-  const fallback = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=600&auto=format&fit=crop';
+  const img = resolveImageUrl(story.imageUrl, story.category || story.headline);
 
   return (
     <motion.div
@@ -43,7 +35,7 @@ const MiniCard = ({ story, onClick }) => {
       transition={{ type: 'spring', stiffness: 300, damping: 24 }}
     >
       <div className="mini-card__img-wrap">
-        <img src={img || fallback} alt={story.headline} loading="lazy" />
+        <img src={img} alt={story.headline} loading="lazy" />
         <div className="mini-card__overlay" />
         {story.category && (
           <span className="mini-card__pill">{story.category}</span>

@@ -1,85 +1,87 @@
-/* ── StoryCard ─────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════
+   STORY CARD
+   ════════════════════════════════════════════════════ */
+
 .story-card {
   position: relative;
   width: 100%;
   height: 100%;
   max-width: 420px;
   margin: 0 auto;
-  border-radius: 28px;
+  border-radius: 24px;
   overflow: hidden;
-  background: #0d1117;
+  background: #090d13;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 30px 80px rgba(0, 0, 0, 0.8),
-    0 0 120px rgba(245, 158, 11, 0.06);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 24px 64px rgba(0, 0, 0, 0.85);
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .story-card.inactive {
-  opacity: 0.28;
-  transform: scale(0.94);
+  opacity: 0.22;
+  transform: scale(0.93);
   pointer-events: none;
 }
 
-/* ── Background Image ──────────────────────────────────── */
+/* ── Background image ────────────────────────────────── */
 .story-card__bg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .story-card__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
+/* ── Gradient overlay — STRONG so any image works ───── */
 .story-card__gradient {
   position: absolute;
   inset: 0;
+  /* Multi-stop: almost opaque at bottom, light tint at top */
   background: linear-gradient(
     to top,
-    rgba(9, 13, 19, 1) 0%,
-    rgba(9, 13, 19, 0.88) 28%,
-    rgba(9, 13, 19, 0.35) 62%,
-    transparent 100%
+    rgba(9, 13, 19, 1)    0%,
+    rgba(9, 13, 19, 0.97) 15%,
+    rgba(9, 13, 19, 0.88) 35%,
+    rgba(9, 13, 19, 0.45) 60%,
+    rgba(9, 13, 19, 0.2)  80%,
+    rgba(9, 13, 19, 0.35) 100%
   );
 }
 
-/* Subtle top vignette */
+/* Top vignette so the back button is always readable */
 .story-card__gradient::after {
-  content: "";
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, rgba(9, 13, 19, 0.5), transparent);
+  top: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(9, 13, 19, 0.55), transparent);
 }
 
-/* ── Amber accent strip at bottom ─────────────────────── */
+/* ── Accent strip ────────────────────────────────────── */
 .story-card__accent {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, #f59e0b, #ec4899, #6366f1);
   opacity: 0.9;
-  border-radius: 0 0 28px 28px;
+  border-radius: 0 0 24px 24px;
+  z-index: 15;
 }
 
-/* ── Side Action Rail ─────────────────────────────────── */
+/* ── Side Action Rail ────────────────────────────────── */
 .story-card__rail {
   position: absolute;
   right: 14px;
-  bottom: 160px;
+  bottom: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   z-index: 20;
 }
 
@@ -88,58 +90,48 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  cursor: pointer;
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .rail-btn__icon {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(13, 17, 23, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(9, 13, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: #f0f4ff;
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  transition: background 0.2s, border-color 0.2s, transform 0.18s, box-shadow 0.2s;
 }
 
-.rail-btn:hover .rail-btn__icon {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: rgba(245, 158, 11, 0.4);
-  transform: scale(1.1);
-}
-
-.rail-btn:active .rail-btn__icon {
-  transform: scale(0.93);
-}
+.rail-btn:hover  .rail-btn__icon { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); transform: scale(1.08); }
+.rail-btn:active .rail-btn__icon { transform: scale(0.92); }
 
 .rail-btn__label {
   font-size: 10px;
-  font-weight: 600;
-  color: rgba(240, 244, 255, 0.6);
+  font-weight: 700;
+  color: rgba(240, 244, 255, 0.55);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-/* Save active state */
+/* Save active */
 .rail-btn.saved .rail-btn__icon {
   background: rgba(245, 158, 11, 0.18);
   border-color: rgba(245, 158, 11, 0.55);
   color: #f59e0b;
   box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
 }
+.rail-btn.saved .rail-btn__label { color: #f59e0b; }
 
-.rail-btn.saved .rail-btn__label {
-  color: #f59e0b;
-}
-
-/* Share active state (flash) */
+/* Share flash */
 .rail-btn.shared .rail-btn__icon {
   background: rgba(99, 102, 241, 0.18);
   border-color: rgba(99, 102, 241, 0.55);
@@ -147,20 +139,19 @@
   box-shadow: 0 0 16px rgba(99, 102, 241, 0.35);
 }
 
-/* ── Content ──────────────────────────────────────────── */
+/* ── Content area ────────────────────────────────────── */
 .story-card__content {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* safe-area-inset-bottom handles home indicator / gesture bar */
-  padding: 24px 76px 32px 20px;
-  padding-bottom: max(32px, calc(28px + env(safe-area-inset-bottom)));
+  /* right padding leaves room for the rail */
+  padding: 24px 80px max(36px, calc(30px + env(safe-area-inset-bottom))) 20px;
   z-index: 10;
 }
 
-/* ── Category pill ──────────────────────────────────────── */
+/* ── Category pill ───────────────────────────────────── */
 .story-card__pill {
   display: inline-flex;
   align-items: center;
@@ -171,63 +162,64 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #f59e0b;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(9, 13, 19, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   margin-bottom: 10px;
   align-self: flex-start;
 }
 
-/* ── Headline ─────────────────────────────────────────── */
+/* ── Headline ────────────────────────────────────────── */
 .story-card__headline {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
   color: #f0f4ff;
-  line-height: 1.25;
+  line-height: 1.22;
   margin-bottom: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
 }
 
-/* ── Summary ──────────────────────────────────────────── */
+/* ── Summary ─────────────────────────────────────────── */
 .story-card__summary {
   font-size: 13px;
-  color: rgba(240, 244, 255, 0.78);
+  color: rgba(240, 244, 255, 0.82);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 10px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* ── Why it Matters box ───────────────────────────────── */
+/* ── Why it Matters ──────────────────────────────────── */
 .story-card__matters {
   padding: 10px 14px;
   border-radius: 14px;
-  background: rgba(245, 158, 11, 0.06);
+  background: rgba(9, 13, 19, 0.6);
   border: 1px solid rgba(245, 158, 11, 0.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   margin-bottom: 12px;
 }
 
 .story-card__matters h4 {
   font-size: 9px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: #f59e0b;
   margin-bottom: 4px;
 }
 
 .story-card__matters p {
   font-size: 12px;
-  color: rgba(240, 244, 255, 0.7);
+  color: rgba(240, 244, 255, 0.72);
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -235,66 +227,67 @@
   overflow: hidden;
 }
 
-/* ── Footer ───────────────────────────────────────────── */
+/* ── Footer — Sources always visible ────────────────── */
 .story-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  /* ensure it never gets hidden behind the rail */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  z-index: 11;
+  z-index: 12;
+  flex-wrap: nowrap;
 }
 
 .story-card__meta {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(240, 244, 255, 0.38);
+  color: rgba(240, 244, 255, 0.4);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── Sources button — ALWAYS VISIBLE ─────────────────── */
+/* ── Sources button ──────────────────────────────────── */
 .story-card__sources-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(245, 158, 11, 0.14);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.4);
   color: #f59e0b;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s, box-shadow 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
-  /* ensure tap target */
   min-height: 36px;
   touch-action: manipulation;
 }
 
 .story-card__sources-btn:hover,
 .story-card__sources-btn:active {
-  background: rgba(245, 158, 11, 0.25);
-  border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.28);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
 }
 
-/* ── Toast notification ───────────────────────────────── */
+/* ── Toast ───────────────────────────────────────────── */
 .story-card__toast {
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 60;
-  background: rgba(13, 17, 23, 0.95);
+  background: rgba(9, 13, 19, 0.95);
   border: 1px solid rgba(245, 158, 11, 0.2);
   border-radius: 999px;
   padding: 8px 20px;
@@ -304,69 +297,72 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   white-space: nowrap;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
-/* ════════════════════════════════════════════
-   RESPONSIVE — phone-first fixes
-   ════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+   ════════════════════════════════════════════════════ */
 
-/* All phones ≤ 768px */
+/* On mobile the card fills the full screen — remove border-radius */
 @media (max-width: 768px) {
-  /* Hide "Why it matters" — saves ~70px, guarantees footer is visible */
+  .story-card {
+    border-radius: 0;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .story-card__accent {
+    border-radius: 0;
+  }
+
+  /* Hide "Why it matters" — saves vertical space for footer */
   .story-card__matters { display: none; }
 
-  /* Clamp summary to 2 lines */
+  /* Summary: max 2 lines */
   .story-card__summary { -webkit-line-clamp: 2; }
 
-  /* Rail — move higher so it never overlaps the footer */
+  /* Move rail up so it doesn't compete with footer */
   .story-card__rail {
     right: 12px;
-    bottom: 130px;
+    bottom: 120px;
     gap: 12px;
+  }
+
+  .story-card__content {
+    padding: 20px 72px max(28px, calc(22px + env(safe-area-inset-bottom))) 16px;
   }
 }
 
 /* Small phones ≤ 420px */
 @media (max-width: 420px) {
-  .story-card__content {
-    padding: 16px 68px 0 14px;
-    /* Extra safe-area room for Android nav bar + gesture strip */
-    padding-bottom: max(24px, calc(18px + env(safe-area-inset-bottom)));
-  }
-
   .story-card__headline {
-    font-size: 17px;
-    -webkit-line-clamp: 3;
+    font-size: 19px;
     margin-bottom: 8px;
   }
 
   .story-card__summary {
-    font-size: 12px;
+    font-size: 12.5px;
     -webkit-line-clamp: 2;
     margin-bottom: 8px;
   }
 
-  .rail-btn__icon   { width: 40px; height: 40px; }
+  .rail-btn__icon   { width: 42px; height: 42px; }
   .rail-btn__label  { font-size: 9px; }
   .story-card__rail { right: 10px; bottom: 110px; gap: 10px; }
 
-  .story-card__sources-btn {
-    padding: 7px 11px;
-    font-size: 11px;
-    gap: 4px;
-  }
+  .story-card__sources-btn { padding: 7px 13px; font-size: 11px; }
+  .story-card__meta        { font-size: 9px; }
 
-  .story-card__meta {
-    font-size: 9px;
+  .story-card__content {
+    padding: 16px 66px max(26px, calc(20px + env(safe-area-inset-bottom))) 14px;
   }
 }
 
-/* Very short phones (iPhone SE, Galaxy A-series landscape, etc.) */
-@media (max-height: 700px) {
-  .story-card__summary { -webkit-line-clamp: 1; }
-  .story-card__headline { -webkit-line-clamp: 2; font-size: 16px; }
-  .story-card__rail { bottom: 100px; }
+/* Very short screens (landscape phone, iPhone SE) */
+@media (max-height: 680px) {
+  .story-card__summary  { -webkit-line-clamp: 1; }
+  .story-card__headline { font-size: 17px; -webkit-line-clamp: 2; }
+  .story-card__rail     { bottom: 96px; }
 }
-

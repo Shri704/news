@@ -2,19 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bookmark, Share2, Library } from 'lucide-react';
 import SourceModal from './SourceModal.jsx';
-import API_BASE from '../utils/api.js';
+import API_BASE, { resolveImageUrl } from '../utils/api.js';
 import './StoryCard.css';
-
-/**
- * Resolves a story imageUrl to a full URL.
- * - Relative paths like /images/uuid.png  → http://localhost:5000/images/uuid.png
- * - Absolute URLs (https://...) pass through unchanged.
- */
-const resolveImageUrl = (url) => {
-  if (!url) return null;
-  if (url.startsWith('/')) return `${API_BASE}${url}`;
-  return url;
-};
 
 
 /* ── localStorage helpers ─────────────────────────────── */
@@ -111,10 +100,7 @@ const StoryCard = ({ story, isActive }) => {
         transition={{ duration: 12, ease: 'easeOut' }}
       >
         <img
-          src={
-            resolveImageUrl(story.imageUrl) ||
-            'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1080&auto=format&fit=crop'
-          }
+          src={resolveImageUrl(story.imageUrl, story.category || story.headline)}
           alt={story.headline}
         />
         <div className="story-card__gradient" />
