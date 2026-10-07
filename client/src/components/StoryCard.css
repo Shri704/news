@@ -154,10 +154,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 24px 20px 32px 20px;
+  /* safe-area-inset-bottom handles home indicator / gesture bar */
+  padding: 24px 76px 32px 20px;
+  padding-bottom: max(32px, calc(28px + env(safe-area-inset-bottom)));
   z-index: 10;
-  /* leave room for right rail */
-  padding-right: 76px;
 }
 
 /* ── Category pill ──────────────────────────────────────── */
@@ -308,22 +308,65 @@
   pointer-events: none;
 }
 
-/* ── Responsive tweaks ───────────────────────────────── */
-@media (max-width: 420px) {
-  .story-card__content {
-    padding: 18px 14px 24px 14px;
-    padding-right: 68px;
+/* ════════════════════════════════════════════
+   RESPONSIVE — phone-first fixes
+   ════════════════════════════════════════════ */
+
+/* All phones ≤ 768px */
+@media (max-width: 768px) {
+  /* Hide "Why it matters" — saves ~70px, guarantees footer is visible */
+  .story-card__matters { display: none; }
+
+  /* Clamp summary to 2 lines */
+  .story-card__summary { -webkit-line-clamp: 2; }
+
+  /* Rail — move higher so it never overlaps the footer */
+  .story-card__rail {
+    right: 12px;
+    bottom: 130px;
+    gap: 12px;
   }
-  .story-card__headline { font-size: 18px; }
-  .story-card__summary  { font-size: 12px; -webkit-line-clamp: 2; }
-  .story-card__matters  { display: none; } /* hide on very small to protect footer */
-  .rail-btn__icon       { width: 40px; height: 40px; }
-  .story-card__rail     { right: 10px; bottom: 140px; gap: 10px; }
-  .story-card__sources-btn { padding: 7px 12px; font-size: 11px; }
 }
 
-@media (max-height: 680px) {
-  /* Short phones (e.g. iPhone SE) */
-  .story-card__summary  { -webkit-line-clamp: 2; }
-  .story-card__matters  { display: none; }
+/* Small phones ≤ 420px */
+@media (max-width: 420px) {
+  .story-card__content {
+    padding: 16px 68px 0 14px;
+    /* Extra safe-area room for Android nav bar + gesture strip */
+    padding-bottom: max(24px, calc(18px + env(safe-area-inset-bottom)));
+  }
+
+  .story-card__headline {
+    font-size: 17px;
+    -webkit-line-clamp: 3;
+    margin-bottom: 8px;
+  }
+
+  .story-card__summary {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 8px;
+  }
+
+  .rail-btn__icon   { width: 40px; height: 40px; }
+  .rail-btn__label  { font-size: 9px; }
+  .story-card__rail { right: 10px; bottom: 110px; gap: 10px; }
+
+  .story-card__sources-btn {
+    padding: 7px 11px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .story-card__meta {
+    font-size: 9px;
+  }
 }
+
+/* Very short phones (iPhone SE, Galaxy A-series landscape, etc.) */
+@media (max-height: 700px) {
+  .story-card__summary { -webkit-line-clamp: 1; }
+  .story-card__headline { -webkit-line-clamp: 2; font-size: 16px; }
+  .story-card__rail { bottom: 100px; }
+}
+

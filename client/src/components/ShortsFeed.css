@@ -1,16 +1,20 @@
 .shorts-feed-wrapper {
   width: 100%;
   height: 100vh;
+  height: 100dvh; /* dynamic viewport height — hides when browser chrome collapses */
   display: flex;
   justify-content: center;
   background-color: var(--bg-darker);
   position: relative;
   overflow: hidden;
+  /* Account for phone home-indicator / gesture bar */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .story-snap-point {
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
